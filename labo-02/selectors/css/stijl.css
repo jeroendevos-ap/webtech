@@ -10,32 +10,49 @@ body {
 }
 
 /* 1. alle links in de navigatie -> color: crimson; */
-
+nav a {
+  color: crimson;
+}
 
 /* 2. alleen de paragrafen in de footer -> font-size: 0.875rem; */
-
+footer p {
+  font-size: 0.875rem;
+}
 
 /* 3. alleen de lijstitems van het BUITENSTE niveau in de lijst met de class
       rassen (dus niet de items van de binnenlijsten) -> outline: 2px solid crimson;
       (outline tekent een kader rond precies het element dat je raakte; de
       property zelf komt in hoofdstuk 3) */
-
+.rassen > li {
+  outline: 2px solid crimson;
+}
 
 /* 4. de paragraaf die onmiddellijk na elke h2 komt -> font-style: italic; */
-
+h2 + p {
+  font-style: italic;
+}
 
 /* 5. elk oneven item in de lijst met openingsuren -> background-color: #f1e9dc; */
-
+.uren li:nth-child(odd) {
+  background-color: #f1e9dc;
+}
 
 /* 6. het laatste item in de lijst met openingsuren -> color: crimson; */
-
+.uren li:last-child {
+  color: crimson;
+}
 
 /* 7. de slogan en de intro tegelijk, in één regel -> color: darkslateblue; */
-
+.slogan, .intro {
+  color: darkslateblue;
+}
 
 /* 8. elke link in main wanneer de muis erover gaat OF wanneer ze focus heeft
       -> background-color: yellow; */
-
+main a:hover,
+main a:focus {
+  background-color: yellow;
+}
 
 
 /* ---- Lezen: welke elementen raken deze vijf selectors? Schrijf het antwoord

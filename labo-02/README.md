@@ -1,16 +1,16 @@
 # Labo 2 - reflecties
 
-Naam: (jouw naam)
+Naam: Jeroen De Vos
 
 ## 2. Selectors lezen
 
 Welke elementen raakt elke selector? Eén zin per selector.
 
-- a. `header nav ul li a`: 
-- b. `article > p`: 
-- c. `.uren li:nth-child(3)`: 
-- d. `h2 ~ p`: 
-- e. `.rassen li:first-child`: 
+- a. `header nav ul li a`: Adopteren, Onze bewoners, Openingsuren.
+- b. `article > p`: "Daarna…", "Op dit moment…" en "Je kan zonder afspraak…".
+- c. `.uren li:nth-child(3)`: "woensdag: 14-18u".
+- d. `h2 ~ p`: "Daarna…", "Op dit moment…" en "Je kan zonder afspraak…".
+- e. `.rassen li:first-child`: "Honden", "Herders en herderkruisingen" en "Europese korthaar"
 
 ## 3. Voorspel, dan kijk
 
