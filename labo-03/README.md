@@ -12,7 +12,7 @@ Naam: Jeroen De Vos (modeloplossing)
 ## 2. Slogan
 
 - Welke property centreerde de tekst, en welke de kolom?
-  De tekst: `text-align: center` (op `body`, en het erft door naar h2, p en de knop). De kolom: `width: 40rem` met `max-width: 100%` plus `margin: 12rem auto 0`; de twee auto-marges verdelen de vrije ruimte links en rechts gelijk.
+  De tekst: `text-align: center` (op `body`, en het erft door naar h2, p en de knop). De kolom: `width: 40rem` met `max-width: 100%` plus `margin: 12rem auto`; de twee auto-marges verdelen de vrije ruimte links en rechts gelijk.
 - Waarom werkte de padding op de knop pas na `display: inline-block`?
   Een `a` is inline. Bij een inline box tekent de browser de padding wel, maar die duwt de regel niet open: verticale padding en `margin-top` tellen niet mee voor de lijnhoogte, dus de knop overlapt de paragraaf erboven. Met `inline-block` wordt de knop een echte box met volledig boxmodel (padding en marge duwen de omgeving weg), en omdat hij nog in de tekstregel staat, centreert `text-align` hem. Met `display: block` zou hij over de volle 40rem uitrekken.
 

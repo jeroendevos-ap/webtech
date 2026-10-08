@@ -13,7 +13,7 @@
 body {
   width: 40rem;
   max-width: 100%;
-  margin: 12rem auto 0;
+  margin: 12rem auto;
   font-family: Arial, sans-serif;
   color: var(--kleur-tekst);
   text-align: center;
