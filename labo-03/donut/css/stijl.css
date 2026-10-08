@@ -1,0 +1,44 @@
+/* stijl.css - labo 3, donut (reset.css is linked before this file) */
+
+/* === tokens === */
+:root {
+  --kleur-oranje: #ec4b03;
+  --kleur-paars: #b99ec1;
+  --kleur-geel: #f9b700;
+  --kleur-lijn: black;
+  --rand: 0.75rem solid var(--kleur-lijn);
+}
+
+/* === your rules === */
+/* enkel de buitenste box krijgt een maat in vh */
+main {
+  width: 90vh;
+  height: 90vh;
+  margin: 5vh auto;
+  border: var(--rand);
+  background-color: var(--kleur-oranje);
+}
+
+/* percentages van main: de ouder heeft een expliciete hoogte */
+div {
+  width: 70%;
+  height: 70%;
+  margin: 15%;
+  border: var(--rand);
+  border-radius: 50%;
+  background-color: var(--kleur-paars);
+  overflow: hidden;
+}
+
+h1 {
+  width: 90%;
+  height: 90%;
+  margin: -7%;
+  padding-top: 40%;
+  border: var(--rand);
+  background-color: var(--kleur-geel);
+  font-family: Georgia, serif;
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+}

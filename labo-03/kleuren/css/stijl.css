@@ -1,0 +1,51 @@
+/* stijl.css - labo 3, kleuren (reset.css is linked before this file) */
+
+/* === tokens === */
+:root {
+  --kleur-tomato: tomato;
+  --kleur-orangered: orangered;
+  --kleur-coral: coral;
+  --kleur-lightsalmon: lightsalmon;
+  --kleur-darkorange: darkorange;
+  --kleur-tekst: white;
+}
+
+/* === your rules === */
+body {
+  font-family: Arial, sans-serif;
+  color: var(--kleur-tekst);
+  text-align: center;
+}
+
+/* user agent stylesheet: padding-left 40px en bolletjes (list-style);
+   ook margin 1em boven en onder, anders is de pagina 2rem te hoog */
+ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+li {
+  height: 50vh;
+  padding-top: 11rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  letter-spacing: 0.25rem;
+}
+
+.codes {
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+}
+
+.codes span {
+  margin: 0 0.75rem;
+}
+
+.tomato      { background-color: var(--kleur-tomato); }
+.orangered   { background-color: var(--kleur-orangered); }
+.coral       { background-color: var(--kleur-coral); }
+.lightsalmon { background-color: var(--kleur-lightsalmon); }
+.darkorange  { background-color: var(--kleur-darkorange); }
