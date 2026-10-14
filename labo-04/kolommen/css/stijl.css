@@ -1,0 +1,44 @@
+/* stijl.css - labo 4, kolommen (reset.css is linked before this file) */
+
+/* === tokens === */
+:root {
+  --kleur-1: darkturquoise;
+  --kleur-2: darkviolet;
+  --kleur-3: deepskyblue;
+  --cijfer: white;
+}
+
+/* === your rules === */
+
+/* rij-container: één as, dus flexbox; vult het venster */
+main {
+  display: flex;
+  gap: 4vw;
+  height: 100vh;
+  padding: 10vh 4vw;
+}
+
+/* elk item is zelf een flex-container die zijn cijfer centreert */
+main > div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--cijfer);
+  font-family: Arial, sans-serif;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+main > div:nth-child(1) {
+  background-color: var(--kleur-1);
+}
+
+main > div:nth-child(2) {
+  flex: 2;
+  background-color: var(--kleur-2);
+}
+
+main > div:nth-child(3) {
+  background-color: var(--kleur-3);
+}

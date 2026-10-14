@@ -1,0 +1,55 @@
+/* stijl.css - labo 4, navigatie (reset.css is linked before this file) */
+
+/* === tokens === */
+:root {
+  --balk: #1f3a2e;
+  --tekst: #f3efe6;
+  --accent: #e6b53c;
+}
+
+/* === your rules === */
+
+body {
+  font-family: Verdana, sans-serif;
+}
+
+/* balk: flex-container die naam en navigatie uit elkaar zet */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--balk);
+}
+
+.logo {
+  color: var(--accent);
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* lijst: flex-rij met gap, zonder user-agent-bagage */
+nav ul {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* elke link is een klikvlak: een box met padding */
+nav a {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  color: var(--tekst);
+  text-decoration: none;
+}
+
+nav a.actief,
+nav a:hover,
+nav a:focus {
+  background-color: var(--accent);
+  color: var(--balk);
+}

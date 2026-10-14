@@ -1,0 +1,57 @@
+/* stijl.css - labo 4, trap (reset.css is linked before this file) */
+
+/* === tokens === */
+:root {
+  --trede-1: #1446a0;
+  --trede-2: #db3069;
+  --trede-3: #f5d547;
+  --trede-4: #ebebd3;
+  --cijfer: white;
+  --cijfer-donker: #2b2b2b;
+}
+
+/* === your rules === */
+
+/* raster-container: 4 x 4 cellen over het hele venster, zonder gap */
+.trap {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  height: 100vh;
+}
+
+/* elke trede centreert haar cijfer */
+.trede {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--cijfer);
+  font-family: Arial, sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.trede:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+  background-color: var(--trede-1);
+}
+
+.trede:nth-child(2) {
+  grid-column: 2;
+  grid-row: 2;
+  background-color: var(--trede-2);
+}
+
+.trede:nth-child(3) {
+  grid-column: 3;
+  grid-row: 3;
+  background-color: var(--trede-3);
+}
+
+.trede:nth-child(4) {
+  grid-column: 4 / -1;
+  grid-row: 4;
+  background-color: var(--trede-4);
+  color: var(--cijfer-donker);
+}
