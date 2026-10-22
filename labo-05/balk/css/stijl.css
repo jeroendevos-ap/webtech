@@ -1,0 +1,128 @@
+/* stijl.css - labo 5, balk (reset.css is linked before this file) */
+
+/* === tokens === */
+:root {
+  --papier: #f8f7f5;
+  --inkt: #1a1a1a;
+  --gedempt: #6b6b6b;
+  --balk: #000000;
+  --link: #9a9a9a;
+  --link-actief: #ffffff;
+  --balk-hoogte: 3.5rem;
+  --tekst-font: Verdana, sans-serif;
+  --kop-font: Georgia, serif;
+}
+
+/* === your rules === */
+
+/* interne links landen onder de balk, niet erachter */
+html {
+  scroll-padding-top: var(--balk-hoogte);
+}
+
+body {
+  background-color: var(--papier);
+  color: var(--inkt);
+  font-family: var(--tekst-font);
+  line-height: 1.6;
+}
+
+h1,
+h2 {
+  font-family: var(--kop-font);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+/* balk: flex-rij die blijft plakken; blijft in de flow */
+header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  height: var(--balk-hoogte);
+  padding: 0 2rem;
+  background-color: var(--balk);
+}
+
+/* één auto-marge duwt de navigatie naar rechts */
+.logo {
+  margin-right: auto;
+  color: var(--link-actief);
+  font-family: var(--kop-font);
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav a {
+  color: var(--link);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+nav a.actief,
+nav a:hover,
+nav a:focus {
+  color: var(--link-actief);
+}
+
+/* leeskolom: gewone blokflow, verschillende afstanden tussen de blokken */
+main {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1,
+.intro {
+  margin-bottom: 0.5rem;
+}
+
+.intro {
+  color: var(--gedempt);
+}
+
+.inhoud {
+  margin: 0 0 3rem;
+  padding-left: 1.25rem;
+}
+
+.inhoud a {
+  color: var(--inkt);
+}
+
+section + section {
+  margin-top: 3rem;
+}
+
+/* rubriek: kop en alinea's onder elkaar met gap */
+section {
+  display: grid;
+  gap: 1rem;
+}
+
+footer {
+  padding: 1rem;
+  background-color: var(--balk);
+  color: var(--link);
+  font-size: 0.875rem;
+  text-align: center;
+}

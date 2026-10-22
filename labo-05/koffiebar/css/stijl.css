@@ -1,0 +1,203 @@
+/* stijl.css - labo 5, koffiebar (reset.css is linked before this file) */
+
+/* === tokens === */
+:root {
+  --papier: #f4efe6;
+  --kaart: white;
+  --inkt: #2b2b2b;
+  --gedempt: #6b6b6b;
+  --balk: #2f241d;
+  --balk-tekst: #f4efe6;
+  --accent: #c8742e;
+  --rand: #ddd5c8;
+  --tekst-font: Verdana, sans-serif;
+  --kop-font: Georgia, serif;
+}
+
+/* === your rules === */
+
+/* grondplan: named areas, zijbalk naast inhoud, sticky footer */
+body {
+  display: grid;
+  grid-template-columns: 16rem 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "kop kop"
+    "zij inhoud"
+    "voet voet";
+  min-height: 100vh;
+  background-color: var(--papier);
+  color: var(--inkt);
+  font-family: var(--tekst-font);
+  line-height: 1.6;
+}
+
+h1,
+h2 {
+  font-family: var(--kop-font);
+}
+
+/* balk: flex-rij, één auto-marge duwt de navigatie naar rechts */
+header {
+  grid-area: kop;
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--balk);
+}
+
+.logo {
+  margin-right: auto;
+  color: var(--accent);
+  font-family: var(--kop-font);
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav a {
+  color: var(--balk-tekst);
+  text-decoration: none;
+}
+
+nav a.actief {
+  color: var(--accent);
+}
+
+nav a:hover,
+nav a:focus {
+  text-decoration: underline;
+}
+
+/* zijbalk */
+aside {
+  grid-area: zij;
+  padding: 2rem;
+  border-right: 1px solid var(--rand);
+  color: var(--gedempt);
+  font-size: 0.875rem;
+}
+
+aside h2 {
+  margin-bottom: 0.25rem;
+  color: var(--inkt);
+  font-size: 1.125rem;
+}
+
+aside p + h2 {
+  margin-top: 1.5rem;
+}
+
+/* inhoud: kop, intro en rooster onder elkaar */
+main {
+  grid-area: inhoud;
+  display: grid;
+  align-content: start;
+  gap: 0.5rem;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.intro {
+  color: var(--gedempt);
+}
+
+/* kaartenrooster: grid van drie kolommen */
+.kaarten {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* kaart: anker van de badge, flex-kolom, foto volgt de ronde hoeken */
+.kaart {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: var(--kaart);
+  box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 0.08);
+}
+
+/* met foto: de kaart geeft haar padding aan .tekst */
+.kaart:has(img) {
+  padding: 0;
+}
+
+.kaart:has(img) .tekst {
+  padding: 1.5rem;
+}
+
+/* zonder foto: oranje streep bovenaan */
+.kaart:not(:has(img)) {
+  border-top: 0.5rem solid var(--accent);
+}
+
+/* het drieluik: volle breedte, 4 staat tot 3, bijsnijden */
+.kaart img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* tekst vult de kaart; de prijs zakt naar onder */
+.tekst {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tekst h2 {
+  font-size: 1.5rem;
+}
+
+/* de beschrijving houdt minstens 1rem afstand tot de prijs */
+.tekst p:not(.prijs) {
+  margin-bottom: 0.5rem;
+}
+
+.prijs {
+  margin-top: auto;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* badge: ligt óp de kaart, rekent tegen .kaart */
+.badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  background-color: var(--accent);
+  color: var(--balk-tekst);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+footer {
+  grid-area: voet;
+  padding: 1rem;
+  background-color: var(--balk);
+  color: var(--balk-tekst);
+  font-size: 0.875rem;
+  text-align: center;
+}

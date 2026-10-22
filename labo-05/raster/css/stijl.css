@@ -1,0 +1,49 @@
+/* stijl.css - labo 5, raster (reset.css is linked before this file) */
+
+/* === tokens === */
+:root {
+  --a: #e9493f;
+  --b: #edd24a;
+  --c: #072f55;
+  --d: #52a51a;
+  --e: #efaad9;
+  --f: #a5f129;
+  --g: #ebc47a;
+  --h: #e8882c;
+  --letter: white;
+}
+
+/* === your rules === */
+
+/* raster-container: uitgetekend met named areas, een punt per lege cel */
+.raster {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "a . . b"
+    "c d e f"
+    "g . . h";
+  gap: 1rem;
+  height: 100vh;
+  padding: 1rem;
+}
+
+/* elk vlak duwt zijn letter naar de rechterbovenhoek */
+.vlak {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem 0.75rem;
+  color: var(--letter);
+  font-family: Arial, sans-serif;
+  font-size: 1.5rem;
+}
+
+.a { grid-area: a; background-color: var(--a); }
+.b { grid-area: b; background-color: var(--b); }
+.c { grid-area: c; background-color: var(--c); }
+.d { grid-area: d; background-color: var(--d); }
+.e { grid-area: e; background-color: var(--e); }
+.f { grid-area: f; background-color: var(--f); }
+.g { grid-area: g; background-color: var(--g); }
+.h { grid-area: h; background-color: var(--h); }

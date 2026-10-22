@@ -1,0 +1,75 @@
+/* stijl.css - labo 5, fotolijst (reset.css is linked before this file) */
+
+/* === tokens === */
+:root {
+  --pagina: #111111;
+  --tekst: #f3efe6;
+  --groen: #4e9a52;
+  --roze: #f2a7d6;
+  --lime: #b4f52d;
+  --rood: #ea4d3d;
+}
+
+/* === your rules === */
+
+body {
+  background-color: var(--pagina);
+  color: var(--tekst);
+  font-family: Verdana, sans-serif;
+}
+
+/* de lijst: grid voor foto en onderschrift, en het anker van de vlakjes */
+.lijst {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  width: 36rem;
+  margin: 4rem auto;
+}
+
+/* het drieluik: volle breedte, vierkant, bijsnijden zonder vervormen */
+.lijst img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+figcaption {
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* de vlakjes liggen óp de foto: absolute tegen de lijst */
+.vlakje {
+  position: absolute;
+  width: 6rem;
+  height: 6rem;
+}
+
+.groen {
+  top: 2rem;
+  left: 2rem;
+  z-index: 1;
+  background-color: var(--groen);
+}
+
+.roze {
+  top: 5rem;
+  left: 5rem;
+  z-index: 2;
+  background-color: var(--roze);
+}
+
+.lime {
+  bottom: 6rem;
+  right: 6rem;
+  z-index: 1;
+  background-color: var(--lime);
+}
+
+.rood {
+  bottom: 3rem;
+  right: 3rem;
+  z-index: 2;
+  background-color: var(--rood);
+}
