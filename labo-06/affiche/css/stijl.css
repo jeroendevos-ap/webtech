@@ -1,0 +1,85 @@
+/* stijl.css - referentie-CSS labo 6, affiche; reset.css is linked before this file */
+
+/* === tokens === */
+:root {
+  --color-paper: #1d1d1b;
+  --color-affiche: #2554ab;
+  --color-ink: #fff8ee;
+  --color-prijs: #ffc83d;
+  --color-datum: #ffffff;
+  --color-uitverkocht: #d6341c;
+  --color-logo: #1d1d1b;
+  --font-heading: Georgia, serif;
+  --font-body: Verdana, sans-serif;
+  --sticker: clamp(4rem, 14vw, 7rem); /* the stickers scale with the screen, within limits (6.7) */
+}
+
+body {
+  background-color: var(--color-paper);
+  font-family: var(--font-body);
+}
+
+/* === the poster: a limit instead of a size, so it never causes a scrollbar (6.6) === */
+.affiche {
+  position: relative;
+  width: min(28rem, 100% - 2rem);
+  aspect-ratio: 3 / 4;
+  margin: 2rem auto;
+  padding: clamp(1.5rem, 6vw, 3rem);
+  background-color: var(--color-affiche);
+  color: var(--color-ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* the text stays clear of the corners */
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  line-height: 1.05;
+  margin-bottom: 0.5rem;
+}
+
+.ondertitel {
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* === the stickers: absolute, relative to the poster (5.4) === */
+.sticker {
+  position: absolute;
+  width: var(--sticker);
+  height: var(--sticker);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  padding: 0.25rem;
+}
+
+.prijs       { background-color: var(--color-prijs); color: var(--color-logo); border-radius: 50%; font-size: 1.25rem; }
+.datum       { background-color: var(--color-datum); color: var(--color-logo); }
+.uitverkocht { background-color: var(--color-uitverkocht); border-radius: 50%; }
+.logo        { background-color: var(--color-logo); font-family: var(--font-heading); font-size: 1.25rem; }
+
+/* base: the four stickers in the top-left corner, each a step further; the DOM order is reversed by z-index (5.5) */
+.datum       { top: 1rem; left: 1rem; }
+.prijs       { top: 2.5rem; left: 2.5rem; z-index: 1; }
+.logo        { top: 4rem; left: 4rem; }
+.uitverkocht { top: 5.5rem; left: 5.5rem; z-index: 1; }
+
+/* === from 800px: two pairs in opposite corners === */
+@media (min-width: 50rem) {
+  .logo        { top: auto; left: auto; bottom: 6rem; right: 6rem; }
+  .uitverkocht { top: auto; left: auto; bottom: 3rem; right: 3rem; }
+}
+
+/* === from 1000px: the four corners === */
+@media (min-width: 62.5rem) {
+  .prijs       { top: 2rem; left: auto; right: 2rem; }
+  .logo        { bottom: 2rem; right: auto; left: 2rem; }
+  .uitverkocht { bottom: 2rem; right: 2rem; }
+}

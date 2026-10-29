@@ -1,0 +1,151 @@
+/* stijl.css - referentie-CSS labo 6, Scheldekaai Festival; reset.css is linked before this file */
+
+/* === tokens === */
+:root {
+  --color-paper: #fff8ee;
+  --color-ink: #1a1a1a;
+  --color-muted: #6b6b6b;
+  --color-accent: #d6341c;
+  --color-accent-text: #ffffff;
+  --font-body: Verdana, sans-serif;
+  --font-heading: Georgia, serif;
+  --space: 1.5rem;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+/* === base: logo centred, the links as full-width buttons in a column (6.4, 6.3) === */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 1rem;
+}
+
+.logo {
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  text-decoration: none;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+nav a {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  border: 2px solid var(--color-accent);
+  border-radius: 2rem;
+  color: var(--color-accent);
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a.actief {
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+nav a:hover,
+nav a:focus {
+  background-color: #ffffff;
+  color: var(--color-ink);
+}
+
+/* === the hero: fluid title and padding (6.7) === */
+.held {
+  background-color: var(--color-accent);
+  color: var(--color-accent-text);
+  padding: clamp(2rem, 8vw, 6rem) clamp(1rem, 5vw, 4rem);
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw + 1rem, 4rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.held p {
+  max-width: 40rem;
+}
+
+/* === the programme === */
+#programma {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 5vw, 3rem) clamp(1rem, 5vw, 2rem);
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.programma {
+  list-style: none;
+  padding-left: 0;
+}
+
+.programma li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e3d9c8;
+}
+
+.programma time {
+  color: var(--color-accent);
+  font-weight: bold;
+  min-width: 4rem;
+}
+
+.programma span {
+  color: var(--color-muted);
+  margin-left: auto;
+}
+
+footer {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+/* === from 800px: the links on one row, centred under the logo === */
+@media (min-width: 50rem) {
+  nav ul {
+    flex-direction: row;
+    justify-content: center;
+    width: auto;
+  }
+}
+
+/* === from 1200px: logo left, links right (5.3) === */
+@media (min-width: 75rem) {
+  header {
+    flex-direction: row;
+    padding: 1.5rem 3rem;
+  }
+
+  .logo {
+    margin-right: auto;
+  }
+}

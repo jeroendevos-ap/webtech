@@ -1,0 +1,72 @@
+/* stijl.css - referentie-CSS labo 6, dashboard; reset.css is linked before this file */
+
+/* === tokens === */
+:root {
+  --color-paper: #f3f1ec;
+  --color-ink: #1f2933;
+  --color-titel: #1f2933;
+  --color-grafiek: #2c6e8f;
+  --color-omzet: #c8742e;
+  --color-bezoekers: #3b7a2a;
+  --color-agenda: #6b4fa3;
+  --color-taken: #b2323a;
+  --color-weer: #e0b43a;
+  --font-body: Verdana, sans-serif;
+  --space: 1rem;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+/* === base: one column, the tiles stacked in DOM order, no placement needed (6.3) === */
+.dashboard {
+  display: grid;
+  gap: var(--space);
+  padding: var(--space);
+}
+
+.tegel {
+  min-height: 6rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.titel     { background-color: var(--color-titel); font-size: 1.5rem; }
+.grafiek   { background-color: var(--color-grafiek); }
+.omzet     { background-color: var(--color-omzet); }
+.bezoekers { background-color: var(--color-bezoekers); }
+.agenda    { background-color: var(--color-agenda); }
+.taken     { background-color: var(--color-taken); }
+.weer      { background-color: var(--color-weer); color: var(--color-ink); }
+
+/* === from 800px: two columns; title, chart and weather across both (4.6), the rest fills in DOM order === */
+@media (min-width: 50rem) {
+  .dashboard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .titel, .grafiek, .weer {
+    grid-column: 1 / -1;   /* from the first line to the last */
+  }
+}
+
+/* === from 1200px: four columns, the chart two by two, each small tile on its own column and row === */
+@media (min-width: 75rem) {
+  .dashboard {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto 1fr 1fr;   /* the fourth row (weather) is created on the fly */
+    min-height: 100svh;
+  }
+
+  .grafiek   { grid-column: 1 / 3; grid-row: 2 / 4; }   /* overrides 1 / -1 from the previous query */
+  .omzet     { grid-column: 3;     grid-row: 2; }
+  .agenda    { grid-column: 4;     grid-row: 2; }
+  .bezoekers { grid-column: 3;     grid-row: 3; }
+  .taken     { grid-column: 4;     grid-row: 3; }
+}

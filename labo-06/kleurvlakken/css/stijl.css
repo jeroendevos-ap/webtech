@@ -1,0 +1,35 @@
+/* stijl.css - referentie-CSS labo 6, kleurvlakken; reset.css is linked before this file */
+
+/* === tokens === */
+:root {
+  --color-rood: #b90020;
+  --color-groen: #349803;
+  --color-geel: #ffcd00;
+  --color-blauw: #006aff;
+}
+
+/* === base: narrow screens, four bands stacked, together one screen high (6.3) === */
+main {
+  display: grid;
+  min-height: 100svh;
+}
+
+.rood  { background-color: var(--color-rood); }
+.groen { background-color: var(--color-groen); }
+.geel  { background-color: var(--color-geel); }
+.blauw { background-color: var(--color-blauw); }
+
+/* === from 600px: four columns (6.4) === */
+@media (min-width: 37.5rem) {
+  main {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* === from 800px: two by two === */
+@media (min-width: 50rem) {
+  main {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
