@@ -1,0 +1,68 @@
+/* stijl.css - referentie-CSS labo 7, tintenladder; reset.css is linked before this file */
+
+/* === tokens === */
+:root {
+  --hue: 210;                               /* change this one number and the whole ladder follows (7.6) */
+  --color-ink: hsl(var(--hue) 25% 12%);
+  --color-paper: hsl(40 30% 97%);
+  --color-muted: hsl(var(--hue) 10% 42%);
+  --font-heading: Georgia, serif;
+  --font-body: Verdana, sans-serif;
+}
+
+/* === base === */
+body {
+  display: grid;
+  grid-template-rows: auto 1fr;             /* header, then the ladder takes the rest */
+  min-height: 100svh;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+header {
+  padding: 2rem 1rem;
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+header p {
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.ladder {
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);      /* ten equal bands */
+}
+
+.trede {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
+/* === the ten steps: one rule per step, same hue, same saturation, only lightness changes (7.6) === */
+.trede:nth-child(1)  { background-color: hsl(var(--hue) 55% 95%); }
+.trede:nth-child(2)  { background-color: hsl(var(--hue) 55% 85%); }
+.trede:nth-child(3)  { background-color: hsl(var(--hue) 55% 75%); }
+.trede:nth-child(4)  { background-color: hsl(var(--hue) 55% 65%); }
+.trede:nth-child(5)  { background-color: hsl(var(--hue) 55% 55%); }
+.trede:nth-child(6)  { background-color: hsl(var(--hue) 55% 45%); }
+.trede:nth-child(7)  { background-color: hsl(var(--hue) 55% 35%); }
+.trede:nth-child(8)  { background-color: hsl(var(--hue) 55% 25%); }
+.trede:nth-child(9)  { background-color: hsl(var(--hue) 55% 15%); }
+.trede:nth-child(10) { background-color: hsl(var(--hue) 55% 5%); }
+
+/* from the sixth step the band is too dark for ink: paper on top (7.8) */
+.trede:nth-child(n + 6) {
+  color: var(--color-paper);
+}

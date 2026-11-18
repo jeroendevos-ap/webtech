@@ -1,0 +1,155 @@
+/* stijl.css - referentie-CSS labo 7, de kaaien; reset.css is linked before this file */
+
+/* === fonts === */
+@font-face {
+  font-family: "Fraunces";
+  src: url("../fonts/fraunces-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/* === tokens === */
+:root {
+  --color-surface: hsl(200 30% 97%);
+  --color-ink: hsl(205 40% 12%);
+  --color-muted: hsl(205 12% 40%);
+  --color-accent: hsl(200 70% 32%);
+  --color-line: hsl(200 20% 82%);
+  --color-overlay: rgb(0 0 0 / 0.55);       /* the contrast measure for text on a photo (F7.10) */
+
+  --font-heading: "Fraunces", Georgia, serif;
+  --font-body: Verdana, sans-serif;
+
+  --text-s: 0.8rem;
+  --text-m: 1rem;
+  --text-l: 1.25rem;
+  --text-xl: 1.563rem;
+
+  --space-xs: 0.25rem;
+  --space-s: 0.5rem;
+  --space-m: 1rem;
+  --space-l: 2rem;
+  --space-xl: 4rem;
+}
+
+/* === base === */
+body {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-m);
+  line-height: 1.5;
+}
+
+/* === the hero: photo as background, text on a dark panel (7.10, F7.10) === */
+.held {
+  background-image: url("../afbeeldingen/kaaien.jpg");
+  background-size: cover;                   /* fill the box, crop the rest */
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 70svh;
+  display: grid;
+  align-items: end;                         /* the panel sits at the bottom of the photo */
+  padding: clamp(1rem, 5vw, 4rem);
+}
+
+.paneel {
+  background-color: var(--color-overlay);
+  color: #fff;
+  max-width: 36rem;
+  padding: var(--space-l);
+}
+
+.bovenkop {
+  font-size: var(--text-s);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: var(--space-s);
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw + 1rem, 3.5rem);   /* 6.7 */
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: var(--space-m);
+}
+
+.lead {
+  font-size: var(--text-l);
+  margin-bottom: var(--space-l);
+}
+
+.knop {
+  display: inline-block;
+  background-color: var(--color-accent);
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: var(--space-s) var(--space-l);
+}
+
+.knop:hover,
+.knop:focus {
+  background-color: #fff;
+  color: var(--color-accent);
+}
+
+/* === main: text column and a practical box with a decoration in its corner === */
+main {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-m);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));   /* 6.8 */
+  gap: var(--space-l);
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-accent);
+  margin-bottom: var(--space-s);
+}
+
+.tekst p {
+  max-width: 65ch;                          /* 7.3 */
+  margin-bottom: var(--space-m);
+}
+
+.praktisch {
+  border: 1px solid var(--color-line);
+  padding: var(--space-m) var(--space-m) var(--space-xl);
+  min-height: 18rem;
+  background-image: url("../afbeeldingen/kompas.png");
+  background-repeat: no-repeat;             /* one copy ... */
+  background-position: right 1rem bottom 1rem;   /* ... in the bottom right corner ... */
+  background-size: 8rem;                    /* ... at 8rem wide */
+}
+
+.praktisch ul {
+  padding-left: 1.25rem;
+}
+
+.praktisch li {
+  margin-bottom: var(--space-xs);
+}
+
+/* === footer: a small tile that repeats, which is what background-repeat does by default === */
+footer {
+  background-image: url("../afbeeldingen/golfjes.png");
+  border-top: 1px solid var(--color-line);
+  padding: var(--space-xl) var(--space-m);
+  text-align: center;
+  color: var(--color-muted);
+  font-size: var(--text-s);
+}
+
+footer p {
+  display: inline-block;
+  background-color: var(--color-surface);   /* text never sits on the pattern itself (F7.10) */
+  padding: var(--space-s) var(--space-m);
+}
