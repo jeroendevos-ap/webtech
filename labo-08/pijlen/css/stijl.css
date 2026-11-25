@@ -1,0 +1,61 @@
+/* stijl.css - referentie-CSS labo 8, pijlen; reset.css is linked before this file */
+
+/* === tokens: colours, three shapes with six points each, one duration and one curve === */
+:root {
+  --papier: hsl(47 20% 92%);
+  --oranje: hsl(28 78% 58%);
+  --groen: hsl(113 62% 64%);
+  --blauw: hsl(190 60% 65%);
+
+  --pijl-rechts: polygon(0 0, 60% 0, 100% 50%, 60% 100%, 0 100%, 40% 50%);
+  --vierkant:    polygon(0 0, 100% 0, 100% 50%, 100% 100%, 0 100%, 0 50%);
+  --pijl-links:  polygon(40% 0, 100% 0, 60% 50%, 100% 100%, 40% 100%, 0 50%);
+
+  --duur: 6s;
+  --curve: ease-in-out;
+}
+
+/* === the grid in the middle of the window (4.7) === */
+body {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  background-color: var(--papier);
+}
+
+.rooster {
+  display: grid;
+  grid-template-columns: repeat(3, 10rem);
+  gap: 3rem;
+}
+
+/* === the tiles: a shape and a colour that change together (8.4, 8.6) === */
+.tegel {
+  height: 8rem;
+  background-color: var(--oranje);
+  clip-path: var(--pijl-rechts);
+  animation: vormen var(--duur) var(--curve) infinite;
+}
+
+/* a negative delay: the animation starts as if it had been running for two seconds already */
+.tegel:nth-child(even) {
+  animation-delay: calc(var(--duur) / -3);
+}
+
+/* the three polygons have the same number of points, so the browser can move from one to the next */
+@keyframes vormen {
+  0%, 100% { clip-path: var(--pijl-rechts); background-color: var(--oranje); }
+  33%      { clip-path: var(--vierkant);    background-color: var(--groen); }
+  66%      { clip-path: var(--pijl-links);  background-color: var(--blauw); }
+}
+
+/* === reduced motion (8.5): everything jumps to its end state === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

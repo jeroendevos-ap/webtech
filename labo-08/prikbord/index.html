@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Labo 8 - Buurthuis Stuivenberg: prikbord</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/stijl.css">
+</head>
+<body>
+  <!-- Do not change this file. Write your CSS in css/stijl.css.
+       Two screenshots: the board at rest, and the board with the mouse on the third note.
+       Every note hangs a little crooked: a transform turns it (8.3). The third note turns around its top
+       left corner instead of its centre (transform-origin). The pin is a pseudo-element (8.6), centred on
+       the top edge with a translate in percentages; the stamp "nieuw" is moved first and turned second.
+       On hover and on focus-within a note straightens and grows slightly, in 200 ms, ease-out, from tokens.
+       The transition sits on the base state (8.2); the stylesheet ends with the reduced-motion block (8.5). -->
+  <header class="kop">
+    <p class="naam">Buurthuis Stuivenberg</p>
+    <h1>Prikbord</h1>
+  </header>
+  <main>
+    <ul class="bord">
+      <li class="briefje">
+        <h2>Repair Café</h2>
+        <p>Elke eerste zaterdag van de maand. Breng je kapotte broodrooster, fiets of broek mee; samen krijgen we het weer aan de praat.</p>
+        <a href="#repair">Kom langs</a>
+      </li>
+      <li class="briefje">
+        <p class="stempel">nieuw</p>
+        <h2>Soep op zondag</h2>
+        <p>Vanaf 12 uur staat er een pot op het vuur. Wie wil helpen snijden, is welkom vanaf 10 uur.</p>
+        <a href="#soep">Schuif aan</a>
+      </li>
+      <li class="briefje scheef">
+        <h2>Huiswerkklas zoekt vrijwilligers</h2>
+        <p>Op dinsdag en donderdag na school. Je hoeft geen leerkracht te zijn: geduld en een uur tijd volstaan.</p>
+        <a href="#huiswerk">Meld je aan</a>
+      </li>
+      <li class="briefje">
+        <h2>Ruilkast</h2>
+        <p>Boeken, planten en puzzels. Neem iets mee, zet iets terug. De kast staat in de gang, naast de fietsen.</p>
+        <a href="#ruilkast">Kijk wat er staat</a>
+      </li>
+    </ul>
+  </main>
+  <footer>
+    <p>Buurthuis Stuivenberg · Pothoekstraat, Antwerpen · elke dag open van 9 tot 17 uur</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,49 @@
+/* stijl.css - referentie-CSS labo 8, estafette; reset.css is linked before this file */
+
+/* === tokens === */
+:root {
+  --wit: hsl(0 0% 100%);
+  --een: hsl(165 34% 47%);
+  --twee: hsl(152 36% 57%);
+  --drie: hsl(187 44% 62%);
+  --vier: hsl(192 45% 77%);
+
+  --duur: 2s;
+  --curve: ease-in-out;
+  --wissel: 250ms;          /* the time between two runners */
+}
+
+/* === four lanes that fill the window === */
+.baan {
+  height: 100svh;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  background-color: var(--wit);
+}
+
+/* === the runners: one scenario, there and back, each one a little later (8.4) === */
+.loper {
+  width: 25svh;                       /* as wide as a lane is high: a square */
+  background-color: var(--een);
+  animation: lopen var(--duur) var(--curve) infinite alternate;
+}
+
+.loper:nth-child(2) { background-color: var(--twee); animation-delay: var(--wissel); }
+.loper:nth-child(3) { background-color: var(--drie); animation-delay: calc(2 * var(--wissel)); }
+.loper:nth-child(4) { background-color: var(--vier); animation-delay: calc(3 * var(--wissel)); }
+
+/* to the right edge: the width of the window minus the runner itself */
+@keyframes lopen {
+  to { transform: translateX(calc(100vw - 100%)); }
+}
+
+/* === reduced motion (8.5): everything jumps to its end state === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

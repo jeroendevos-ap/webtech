@@ -1,0 +1,46 @@
+/* stijl.css - referentie-CSS labo 8, rondje; reset.css is linked before this file */
+
+/* === tokens === */
+:root {
+  --papier: hsl(47 20% 92%);
+  --geel: hsl(50 88% 61%);
+  --oranje: hsl(27 67% 48%);
+  --rood: hsl(8 72% 35%);
+  --bordeaux: hsl(2 80% 25%);
+
+  --duur: 8s;
+  --curve: ease-in-out;
+}
+
+/* === the stage fills the window === */
+.piste {
+  height: 100svh;
+  background-color: var(--papier);
+}
+
+/* === the box: a quarter of the window, with a scenario of its own (8.4) === */
+.blok {
+  width: 50%;
+  height: 50%;
+  background-color: var(--geel);
+  animation: rondje var(--duur) var(--curve) infinite;
+}
+
+/* a percentage in translate is a percentage of the box itself (8.3): 100% is one box further */
+@keyframes rondje {
+  0%, 100% { transform: translate(0, 0);       background-color: var(--geel); }
+  25%      { transform: translate(100%, 0);    background-color: var(--oranje); }
+  50%      { transform: translate(100%, 100%); background-color: var(--rood); }
+  75%      { transform: translate(0, 100%);    background-color: var(--bordeaux); }
+}
+
+/* === reduced motion (8.5): everything jumps to its end state === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

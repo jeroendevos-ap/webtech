@@ -1,0 +1,178 @@
+/* stijl.css - referentie-CSS labo 8, Buurthuis Stuivenberg: prikbord; reset.css and fonts.css are linked before this file */
+
+/* === tokens === */
+:root {
+  --color-surface: hsl(40 30% 96%);
+  --color-bord: hsl(28 35% 58%);
+  --color-papier: hsl(50 90% 90%);
+  --color-ink: hsl(25 30% 15%);
+  --color-muted: hsl(25 15% 35%);
+  --color-accent: hsl(355 70% 42%);
+
+  --font-heading: "Fraunces", Georgia, serif;
+  --font-body: "Atkinson Hyperlegible", Verdana, sans-serif;
+
+  --duur: 200ms;          /* one duration for every micro-interaction (8.1) */
+  --curve: ease-out;      /* one easing */
+
+  --text-s: 0.8rem;
+  --text-m: 1rem;
+  --text-l: 1.25rem;
+  --text-xxl: 1.953rem;
+
+  --space-xs: 0.25rem;
+  --space-s: 0.5rem;
+  --space-m: 1rem;
+  --space-l: 2rem;
+  --space-xl: 4rem;
+}
+
+/* === base === */
+body {
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-m);
+  line-height: 1.5;
+}
+
+.kop {
+  padding: var(--space-l);
+}
+
+.naam {
+  color: var(--color-muted);
+  font-size: var(--text-s);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: var(--text-xxl);
+  line-height: 1.1;
+}
+
+/* === the board === */
+.bord {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--space-l);
+  list-style: none;
+  padding: var(--space-xl) var(--space-l);
+  background-color: var(--color-bord);
+}
+
+/* === a note: the transition on the base state, with named properties (8.2) === */
+.briefje {
+  position: relative;                 /* anchor for the pin and the stamp (5.4) */
+  padding: var(--space-l) var(--space-m) var(--space-m);
+  background-color: var(--color-papier);
+  box-shadow: 0 0.25rem 0.5rem rgb(0 0 0 / 0.2);
+  transition: transform var(--duur) var(--curve), box-shadow var(--duur) var(--curve);
+}
+
+/* every note hangs a little crooked (8.3) */
+.briefje:nth-child(1) { transform: rotate(-3deg); }
+.briefje:nth-child(2) { transform: rotate(2deg); }
+.briefje:nth-child(3) { transform: rotate(5deg); }
+.briefje:nth-child(4) { transform: rotate(-2deg); }
+
+/* this one turns around its top left corner, not around its centre */
+.scheef {
+  transform-origin: top left;
+}
+
+/* the pin: a pseudo-element, centred on the top edge; the percentages are those of the pin itself */
+.briefje::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  transform: translate(-50%, -50%);
+}
+
+.scheef::before {
+  left: var(--space-m);
+}
+
+/* the stamp: move first, turn second (8.3) */
+.stempel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: var(--space-xs) var(--space-s);
+  background-color: var(--color-accent);
+  color: var(--color-papier);
+  font-size: var(--text-s);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transform: translate(25%, -50%) rotate(12deg);
+}
+
+.briefje h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-l);
+  line-height: 1.3;
+  margin-bottom: var(--space-s);
+}
+
+.briefje p {
+  margin-bottom: var(--space-m);
+}
+
+.briefje .stempel {
+  margin-bottom: 0;
+}
+
+.briefje a {
+  color: var(--color-accent);
+  font-weight: 700;
+  transition: color var(--duur) var(--curve);
+}
+
+/* === focus exists on every device: outside the hover query (2.5) === */
+.briefje:focus-within {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 0.75rem 1.5rem rgb(0 0 0 / 0.3);
+}
+
+.briefje a:focus-visible {
+  color: var(--color-ink);
+}
+
+/* === hover only where hovering exists (6.9) === */
+@media (hover: hover) {
+  .briefje:hover {
+    transform: rotate(0deg) scale(1.05);
+    box-shadow: 0 0.75rem 1.5rem rgb(0 0 0 / 0.3);
+  }
+
+  .briefje a:hover {
+    color: var(--color-ink);
+  }
+}
+
+/* === footer === */
+footer {
+  padding: var(--space-m) var(--space-l);
+  color: var(--color-muted);
+  font-size: var(--text-s);
+}
+
+/* === reduced motion (8.5): everything jumps to its end state === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

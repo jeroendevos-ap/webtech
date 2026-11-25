@@ -1,0 +1,165 @@
+/* stijl.css - referentie-CSS labo 8, Scheldeveer: vertrekbord; reset.css and fonts.css are linked before this file */
+
+/* === tokens: a dark board, so the surface is dark and the ink is light === */
+:root {
+  --color-surface: hsl(210 30% 10%);
+  --color-ink: hsl(45 30% 92%);
+  --color-muted: hsl(210 10% 65%);
+  --color-accent: hsl(45 95% 55%);
+  --color-line: hsl(210 15% 25%);
+
+  --font-body: "Atkinson Hyperlegible", Verdana, sans-serif;
+
+  --duur: 200ms;
+  --curve: ease-out;
+
+  --text-s: 0.8rem;
+  --text-m: 1rem;
+  --text-l: 1.25rem;
+  --text-xl: 1.563rem;
+  --text-xxl: 1.953rem;
+
+  --space-xs: 0.25rem;
+  --space-s: 0.5rem;
+  --space-m: 1rem;
+  --space-l: 2rem;
+  --space-xl: 4rem;
+}
+
+/* === base: header, list, footer; the footer sits at the bottom of the window (4.7) === */
+body {
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: var(--space-l);
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-m);
+  line-height: 1.5;
+}
+
+.naam {
+  color: var(--color-muted);
+  font-size: var(--text-s);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+h1 {
+  font-size: var(--text-xxl);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: var(--space-s) 0;
+}
+
+/* the live dot: a pseudo-element that pulses as long as the board is live (8.4) */
+.live {
+  color: var(--color-accent);
+  font-size: var(--text-s);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.live::before {
+  content: "";
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  margin-right: var(--space-xs);
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  animation: pulseren 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseren {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+/* === the departures === */
+.vertrekken {
+  list-style: none;
+  padding-left: 0;
+  margin-top: var(--space-l);
+}
+
+.vertrek {
+  display: grid;
+  grid-template-columns: 6rem 1fr auto;
+  align-items: center;
+  gap: var(--space-m);
+  padding: var(--space-m) 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.tijd {
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+.naar {
+  font-size: var(--text-l);
+}
+
+.status {
+  color: var(--color-muted);
+  font-size: var(--text-s);
+}
+
+.vertrokken {
+  opacity: 0.45;                      /* what has left fades, but stays readable */
+}
+
+.extra {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+/* the loading ring: one pseudo-element, a border with one coloured side, a rotation (8.4) */
+.laden::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: var(--space-xs);
+  vertical-align: middle;
+  border: 3px solid var(--color-line);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: draaien 1s linear infinite;    /* linear: a turn has no beginning or end (8.4) */
+}
+
+@keyframes draaien {
+  to { transform: rotate(360deg); }
+}
+
+/* the extra departure slides in once, when the page loads: an animation with a reason (8.1) */
+.nieuw {
+  animation: verschijnen 300ms var(--curve) both;
+}
+
+@keyframes verschijnen {
+  from { opacity: 0; transform: translateY(-0.5rem); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* === footer === */
+footer {
+  padding-top: var(--space-l);
+  color: var(--color-muted);
+  font-size: var(--text-s);
+}
+
+/* === reduced motion (8.5): everything jumps to its end state === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

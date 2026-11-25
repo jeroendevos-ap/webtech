@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Labo 8 - Scheldeveer: vertrekbord</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/stijl.css">
+</head>
+<body>
+  <!-- Do not change this file. Write your CSS in css/stijl.css.
+       Three things move on this board, each with a reason (8.1, 8.4): the "live" dot pulses as long as the board
+       is live; the loading ring turns while the pontoon is being assigned; the extra departure slides in once
+       when the page loads. The screenshot was taken with prefers-reduced-motion: reduce emulated (8.5), so
+       everything stands still in its end state; without that emulation the dot pulses, the ring turns and the
+       new row slides in. The dot and the ring are pseudo-elements (8.6): no extra HTML. -->
+  <header>
+    <p class="naam">Scheldeveer</p>
+    <h1>Vertrek vanaf Steenplein</h1>
+    <p class="live">live</p>
+  </header>
+  <main>
+    <ol class="vertrekken">
+      <li class="vertrek vertrokken">
+        <span class="tijd">14:05</span>
+        <span class="naar">Linkeroever</span>
+        <span class="status">vertrokken</span>
+      </li>
+      <li class="vertrek">
+        <span class="tijd">14:20</span>
+        <span class="naar">Sint-Anna</span>
+        <span class="status">op tijd</span>
+      </li>
+      <li class="vertrek">
+        <span class="tijd">14:35</span>
+        <span class="naar">Linkeroever</span>
+        <span class="status laden">ponton wordt toegewezen</span>
+      </li>
+      <li class="vertrek nieuw">
+        <span class="tijd">14:50</span>
+        <span class="naar">Hoboken</span>
+        <span class="status extra">extra afvaart</span>
+      </li>
+      <li class="vertrek">
+        <span class="tijd">15:05</span>
+        <span class="naar">Linkeroever</span>
+        <span class="status">op tijd</span>
+      </li>
+    </ol>
+  </main>
+  <footer>
+    <p>Laatst bijgewerkt om 14:12 · bij storm vaart het veer niet</p>
+  </footer>
+</body>
+</html>
